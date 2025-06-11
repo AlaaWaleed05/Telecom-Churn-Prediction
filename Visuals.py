@@ -100,11 +100,11 @@ def run():  # 🔹 Add this line to wrap everything below
     r = requests.get(zip_url)
 
 # Read CSV inside the ZIP directly
-   with zipfile.ZipFile(io.BytesIO(r.content)) as z:
+    with zipfile.ZipFile(io.BytesIO(r.content)) as z:
        
-       with z.open("preprocessed_telecom_churn_data.csv") as f:
+        with z.open("preprocessed_telecom_churn_data.csv") as f:
           
-           df_telecom_churn = pd.read_csv(f)
+            df_telecom_churn = pd.read_csv(f)
     st.sidebar.header("🔍 Filters")
 
     selected_partners = st.sidebar.multiselect(
