@@ -4,15 +4,18 @@ import pandas as pd
 import joblib
 import hashlib
 
-
-
-
-
-
+import joblib
+import requests
+from io import BytesIO
 
 def run():
     # Load the saved model, scaler, and power transformer
-    modelxg = joblib.load('model_XG.pk1')
+    url = "https://raw.githubusercontent.com/AlaaWaleed05/telecom/main/model_XG.pk1"
+
+# Download and load the model
+    response = requests.get(url)
+    modelxg = joblib.load(BytesIO(response.content))
+   
     
     scaler = joblib.load('scaler.pkl')
     pt = joblib.load('power_transformer.joblib')
