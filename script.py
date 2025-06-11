@@ -11,14 +11,18 @@ from io import BytesIO
 def run():
     # Load the saved model, scaler, and power transformer
     url = "https://raw.githubusercontent.com/AlaaWaleed05/telecom/main/model_XG.pk1"
+    urls = "https://raw.githubusercontent.com/AlaaWaleed05/telecom/main/scaler_XG.pkl"
+    urlp = "https://raw.githubusercontent.com/AlaaWaleed05/telecom/main/power_transformer.joblib"
+    
 
 # Download and load the model
     response = requests.get(url)
     modelxg = joblib.load(BytesIO(response.content))
-   
+    responses = requests.get(urls)
+    responsep=requests.get(urlp)
     
-    scaler = joblib.load('scaler.pkl')
-    pt = joblib.load('power_transformer.joblib')
+    scaler = joblib.load(BytesIO(responses.content))
+    pt = joblib.load(BytesIO(responsep.content))
     st.markdown(
         """
         <style>
