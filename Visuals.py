@@ -5,7 +5,9 @@ import matplotlib.pyplot as plt
 import plotly.graph_objs as go
 import plotly.colors as pc
 import plotly.express as px
-
+import zipfile
+import io
+import requests
 def run():  # 🔹 Add this line to wrap everything below
     dark_blue = "#1e2a47"  # Dark blue color code for column names
     white= "#ffffff"  # White color code for descriptions
