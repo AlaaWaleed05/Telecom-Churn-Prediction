@@ -94,7 +94,15 @@ def run():  # 🔹 Add this line to wrap everything below
 
 
     # Load data
-    df_telecom_churn = pd.read_csv("preprocessed_telecom_churn_data.csv")
+    zip_url = "https://github.com/AlaaWaleed05/telecom/raw/main/preprocessed_telecom_churn_data.zip"
+    r = requests.get(zip_url)
+
+# Read CSV inside the ZIP directly
+   with zipfile.ZipFile(io.BytesIO(r.content)) as z:
+       
+       with z.open("preprocessed_telecom_churn_data.csv") as f:
+          
+           df_telecom_churn = pd.read_csv(f)
     st.sidebar.header("🔍 Filters")
 
     selected_partners = st.sidebar.multiselect(
